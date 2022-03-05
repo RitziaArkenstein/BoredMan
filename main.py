@@ -1,6 +1,10 @@
+from pdb import Restart
+from pickle import FALSE
 import pygame
 import math
 import random
+from pygame import mixer
+
 
 # setup display
 pygame.init()
@@ -40,6 +44,13 @@ guessed = []
 # colors
 WHITE = (255,255,255)
 BLACK = (0,0,0)
+
+# background music
+mixer.music.load('bgm.wav')
+mixer.music.play(-1) #-1 to make it loop
+
+def stop_music():
+    mixer.music.stop()
 
 
 def draw():
@@ -91,7 +102,8 @@ def main():
 
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                run = False
+                pygame.quit()
+                exit()
             if event.type == pygame.MOUSEBUTTONDOWN:
                 m_x, m_y = pygame.mouse.get_pos()
                 for letter in letters:
@@ -113,14 +125,20 @@ def main():
                 break
         
         if won:
+            stop_music()
+            winning_sound = mixer.Sound('win_sound.wav')
+            winning_sound.play()
             display_message("You WON!")
             break
 
         if hangman_status == 6:
+            stop_music()
+            losing_sound = mixer.Sound('lose_sound.wav')
+            losing_sound.play()
             display_message("You LOST!")
             break
     
 while True:
     
     main()
-pygame.quit()
+    
