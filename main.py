@@ -58,7 +58,7 @@ def draw():
     win.fill(LIGHT_BLUE)
 
     # draw title
-    text = TITLE_FONT.render("WE DONE BETCH!", 1, BLACK)
+    text = TITLE_FONT.render("GUESS THE WORD!", 1, BLACK)
     win.blit(text, (WIDTH/2 - text.get_width()/2, 20))
 
     # draw word
