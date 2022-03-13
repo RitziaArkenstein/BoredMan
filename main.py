@@ -44,6 +44,7 @@ guessed = []
 # colors
 WHITE = (255,255,255)
 BLACK = (0,0,0)
+LIGHT_BLUE = (173,216,230)
 
 # background music
 mixer.music.load('bgm.wav')
@@ -54,7 +55,7 @@ def stop_music():
 
 
 def draw():
-    win.fill(WHITE)
+    win.fill(LIGHT_BLUE)
 
     # draw title
     text = TITLE_FONT.render("WE DONE BETCH!", 1, BLACK)
@@ -84,7 +85,7 @@ def draw():
 
 def display_message(message):
     pygame.time.delay(1000)
-    win.fill(WHITE)
+    win.fill(LIGHT_BLUE)
     text = WORD_FONT.render(message, 1, BLACK)
     win.blit(text, (WIDTH/2 - text.get_width()/2, HEIGHT/2 - text.get_height()/2))
     pygame.display.update()
