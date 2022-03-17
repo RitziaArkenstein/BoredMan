@@ -3,7 +3,7 @@ from pickle import FALSE
 import pygame
 import math
 import random
-from pygame import mixer
+from pygame import FULLSCREEN, mixer
 
 
 # setup display
@@ -24,9 +24,15 @@ for i in range(26):
     y = starty + ((i // 13) * (GAP + RADIUS * 2))
     letters.append([x, y, chr(A + i), True])
 
+
+#background
+background = pygame.image.load('background.jpg')
+bg = pygame.transform.scale(background, (800, 500))
+
+
 # fonts
-LETTER_FONT = pygame.font.SysFont('comicsans', 40)
-WORD_FONT = pygame.font.SysFont('comicsans', 60)
+LETTER_FONT = pygame.font.SysFont('arial', 30)
+WORD_FONT = pygame.font.SysFont('yu mincho', 50)
 TITLE_FONT = pygame.font.SysFont('comicsans', 70)
 
 # load images.
@@ -116,6 +122,7 @@ def main():
                             guessed.append(ltr)
                             if ltr not in word:
                                 hangman_status += 1
+                                
         
         draw()
 
